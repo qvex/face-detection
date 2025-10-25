@@ -1,0 +1,13 @@
+insightface
+deepface
+opencv-python
+torch
+torchvision
+onnxruntime-gpu
+faiss-gpu
+pandas
+numpy
+scikit-learn
+albumentations
+pillow
+matplotlib
