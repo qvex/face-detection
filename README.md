@@ -1,26 +1,41 @@
-# Face Recognition System - Indian Faces Optimized
+# Face Detection & Recognition System
 
-Face detection and recognition system optimized for Indian facial features using transfer learning and fine-tuning.
+Real-time face verification system optimized for Indian faces with interactive testing interface.
 
-## System Requirements
-
-- Python 3.8+
-- CUDA 11.8+ with cuDNN
-- NVIDIA GPU with 8GB+ VRAM
-
-## Installation
+## Quick Start (Fresh Machine)
 
 ```bash
-pip install insightface deepface opencv-python torch torchvision
-pip install onnxruntime-gpu faiss-gpu pandas numpy scikit-learn
-pip install albumentations pillow matplotlib
-```
+# 1. Install Python 3.11+ (add to PATH)
+# 2. Clone repository
+git clone <repository-url>
+cd face-detection
 
-Or install from requirements.txt:
+# 3. Create virtual environment
+python -m venv venv
+venv\Scripts\activate  # Windows
 
-```bash
+# 4. Install dependencies
 pip install -r requirements.txt
+
+# 5. Run with interactive file browser
+python main.py verify-realtime
 ```
+
+**First run downloads models (~900MB, takes 5-10 minutes)**
+
+See [SETUP.md](SETUP.md) for detailed installation guide.
+
+## Prerequisites
+
+### Minimum (Real-Time Verification)
+- Python 3.11+
+- Webcam (built-in or USB)
+- 8GB RAM
+- Internet (for first-time model download)
+
+### Optional (GPU Baseline Testing)
+- NVIDIA GPU (8GB+ VRAM)
+- CUDA 12.4 + cuDNN 9.14
 
 ## Project Structure
 
