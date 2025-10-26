@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-from src.detection.mtcnn_detector import create_mtcnn_detector
+from src.detection.insightface_detector import create_insightface_detector
 from src.recognition.insightface_cpu_recognizer import create_insightface_cpu_recognizer
 from src.verification.face_verifier import create_face_verifier
 from src.verification.reference_processor import create_reference_processor
@@ -40,7 +40,7 @@ def run_realtime_verification(image_path: str = None) -> int:
             return 1
 
     print("Initializing models...")
-    detector = create_mtcnn_detector(min_face_size=40, confidence_threshold=0.9)
+    detector = create_insightface_detector(model_name='buffalo_l', confidence_threshold=0.5)
     recognizer = create_insightface_cpu_recognizer(model_name='buffalo_l')
     verifier = create_face_verifier(threshold=0.4)
 

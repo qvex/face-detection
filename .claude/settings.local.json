@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(.\\venv\\Scripts\\python.exe -m pip:*)",
+      "Bash(venv/Scripts/python.exe -m pip:*)",
+      "Bash(venv/Scripts/python.exe:*)",
+      "Bash(venvScriptspython.exe scriptsdownload_imfdb.py)",
+      "Bash(nvcc:*)",
+      "Bash(echo:*)",
+      "Read(//c/Program Files/NVIDIA/CUDNN//**)",
+      "Bash(python main.py:*)",
+      "Bash(cat:*)",
+      "Bash(python:*)",
+      "Bash(venvScriptsactivate)",
+      "Bash(\"venv\\Scripts\\python.exe\":*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

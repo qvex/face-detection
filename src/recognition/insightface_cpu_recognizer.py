@@ -23,24 +23,17 @@ class InsightFaceCPURecognizer:
 
         return Success(None)
 
-    def _validate_face_region(self, face: np.ndarray) -> Result[None, EmbeddingError]:
-        if face is None or face.size == 0:
+    def _validate_image(self, image: np.ndarray) -> Result[None, EmbeddingError]:
+        if image is None or image.size == 0:
             return Failure(EmbeddingError(
                 kind=EmbeddingErrorKind.INVALID_FACE_REGION,
-                details="empty or null face region provided"
+                details="empty or null image provided"
             ))
 
-        if len(face.shape) != 3:
+        if len(image.shape) != 3 or image.shape[2] != 3:
             return Failure(EmbeddingError(
                 kind=EmbeddingErrorKind.INVALID_FACE_REGION,
-                details=f"expected 3D face region, got shape {face.shape}"
-            ))
-
-        min_size = 20
-        if face.shape[0] < min_size or face.shape[1] < min_size:
-            return Failure(EmbeddingError(
-                kind=EmbeddingErrorKind.INVALID_FACE_REGION,
-                details=f"face region too small: {face.shape[0]}x{face.shape[1]}, minimum {min_size}x{min_size}"
+                details=f"expected 3-channel image, got shape {image.shape}"
             ))
 
         return Success(None)
@@ -55,7 +48,7 @@ class InsightFaceCPURecognizer:
         self,
         aligned_face: np.ndarray
     ) -> Result[np.ndarray, EmbeddingError]:
-        validation = self._validate_face_region(aligned_face)
+        validation = self._validate_image(aligned_face)
         if isinstance(validation, Failure):
             return validation
 

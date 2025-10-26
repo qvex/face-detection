@@ -24,10 +24,18 @@ python main.py verify-realtime
 ```
 
 **What it does:**
-- Shows interactive file browser with all images from dataset
-- Navigate with arrow keys (↑/↓)
-- Press Enter to select image
+- Shows interactive hierarchical file browser starting at data/test/
+- Browse folders: Arrow keys (↑/↓), Enter to open folder
+- Navigate back: Select "../" option
+- Select image: Arrow keys to highlight, Enter to confirm
 - Automatically starts real-time verification
+
+**Browser Features:**
+- Shows folders marked with [DIR]
+- Shows images indented
+- Displays current location and counts
+- Navigate into subfolders and back out
+- Can access any image in any subdirectory
 
 **Direct Mode:**
 ```bash
@@ -127,10 +135,10 @@ Shows available commands and usage examples.
 ### Core Modules
 
 - **src/detection/** - Face detection implementations
-  - `mtcnn_detector.py` - CPU-optimized MTCNN detector
+  - `insightface_detector.py` - Unified InsightFace detector with RetinaFace
 
 - **src/recognition/** - Face recognition implementations
-  - `insightface_cpu_recognizer.py` - InsightFace with CPU provider
+  - `insightface_cpu_recognizer.py` - InsightFace ArcFace recognizer with CPU provider
 
 - **src/verification/** - Verification logic
   - `face_verifier.py` - Cosine similarity verification
@@ -172,10 +180,10 @@ Shows available commands and usage examples.
 
 | Operation | Expected Latency |
 |-----------|-----------------|
-| MTCNN face detection | 50ms |
-| InsightFace embedding | 20ms |
+| InsightFace RetinaFace detection | 40ms |
+| InsightFace ArcFace embedding | 20ms |
 | Cosine similarity | <1ms |
-| Total per verification | ~150ms |
+| Total per verification | ~100ms |
 
 **Target:** <1 second (ACHIEVED: 6.7x faster)
 

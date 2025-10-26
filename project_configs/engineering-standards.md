@@ -1055,5 +1055,107 @@ class CacheAlignedArray(Generic[T]):
 
 ---
 
+## CRITICAL: Incremental Development Protocol
+
+**ABSOLUTE REQUIREMENT FOR ALL CODE GENERATION**
+
+### Context Preservation Rules
+
+**NEVER write more than 40-50 lines of code in a single response**
+
+**WHY THIS IS CRITICAL:**
+1. **Context Loss Prevention**: Large code blocks cause AI context degradation
+2. **Bug Prevention**: Small batches catch errors before they compound
+3. **Review Efficiency**: User can review and test each increment
+4. **Commit Hygiene**: Clean, focused commits that are easy to revert
+
+### Incremental Development Workflow
+
+**MANDATORY CYCLE:**
+1. **Write**: 40-50 lines maximum per response
+2. **Update dev-log.md**: Document what was implemented
+3. **Wait**: For user to test and commit
+4. **Green Flag**: User confirms "proceed" or "continue"
+5. **Next Increment**: Write next 40-50 lines
+
+**NEVER proceed to next increment without user's green flag**
+
+### Code Batch Size Guidelines
+
+**40-50 lines includes:**
+- Single function implementation (if complex)
+- 2-3 simple functions
+- One small class with 2-3 methods
+- Domain model with 3-4 dataclasses
+- Test file with 5-6 test cases
+
+**If feature requires more:**
+- Break into multiple responses
+- Implement foundation first
+- Add features incrementally
+- Test at each step
+
+### Dev-Log Update Requirements
+
+**After EVERY code batch, update dev-log.md with:**
+- Lines of code added
+- Files modified
+- Functions/classes created
+- What's working now
+- What's next in the sequence
+
+### Helper Script Cleanup Protocol
+
+**MANDATORY: Delete helper and debug scripts after testing is complete**
+
+**Helper scripts include:**
+- Debug scripts created to diagnose issues
+- Test scripts created to verify specific functionality
+- Finder/search scripts created to locate resources
+- One-off validation scripts
+
+**When to delete:**
+- Immediately after functionality is verified and working
+- After issue is diagnosed and fixed
+- When script served its single-purpose goal
+
+**When to keep:**
+- Scripts that provide ongoing utility (system verification, health checks)
+- Scripts user may run on multiple systems
+- Scripts that serve as examples or documentation
+
+**Example:**
+- Delete: debug_ollama.py (found the issue, no longer needed)
+- Delete: find_ollama.py (located executable, purpose served)
+- Keep: test_hardware_detection.py (useful for verifying different systems)
+
+**Rationale:**
+- Prevents codebase clutter
+- Avoids confusion about which scripts are part of the system
+- Maintains clean git history
+- Reduces maintenance burden
+
+### Violations Are Critical Failures
+
+**Writing 100+ lines in one response is a CRITICAL FAILURE equivalent to:**
+- Violating zero unicode policy
+- Exceeding complexity limits
+- Using try-catch blocks
+
+**Consequences:**
+- High risk of bugs from context loss
+- User must reject and request smaller batches
+- Wasted time debugging large code blocks
+
+### Recovery from Large Batch
+
+**If accidentally wrote >50 lines:**
+1. STOP immediately
+2. Acknowledge the violation
+3. Offer to break into smaller increments
+4. Wait for user guidance
+
+---
+
 **SESSION START INSTRUCTION:**
-State: "Following unified engineering standards. All implementations require Part 1 (process verification), Part 2 (advanced Python patterns for code efficiency), and Part 3 (formal correctness proofs). Pre-implementation validation protocol mandatory."
+State: "Following unified engineering standards. All implementations require Part 1 (process verification), Part 2 (advanced Python patterns for code efficiency), and Part 3 (formal correctness proofs). Pre-implementation validation protocol mandatory. CRITICAL: Maximum 40-50 lines per code batch, update dev-log after each batch, wait for user green flag before proceeding."

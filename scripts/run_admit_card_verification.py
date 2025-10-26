@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 
-from src.detection.mtcnn_detector import create_mtcnn_detector
+from src.detection.insightface_detector import create_insightface_detector
 from src.recognition.insightface_cpu_recognizer import create_insightface_cpu_recognizer
 from src.verification.face_verifier import create_face_verifier
 from src.verification.verification_session import create_session
@@ -94,7 +94,7 @@ def process_verification_stage(verifier, ui, session):
     return session_result.value, result
 
 def run_verification_loop():
-    detector = create_mtcnn_detector(min_face_size=40, confidence_threshold=0.9)
+    detector = create_insightface_detector(model_name='buffalo_l', confidence_threshold=0.5)
     recognizer = create_insightface_cpu_recognizer(model_name='buffalo_l')
     verifier = create_face_verifier(threshold=0.4)
     ui = create_verification_ui()

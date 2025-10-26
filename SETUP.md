@@ -77,7 +77,6 @@ This installs:
 - opencv-python (>=4.12.0)
 - insightface (>=0.7)
 - onnxruntime (>=1.16)
-- mtcnn (>=0.1)
 - questionary (>=2.0)
 
 Note: Version constraints are minimums. Latest compatible versions will be installed automatically.
@@ -111,7 +110,7 @@ python -c "import cv2; print('Camera available:', cv2.VideoCapture(0).isOpened()
 
 **Test imports:**
 ```bash
-python -c "import cv2, numpy, insightface, mtcnn, questionary; print('All imports successful')"
+python -c "import cv2, numpy, insightface, questionary; print('All imports successful')"
 ```
 
 ### Step 5: First Run (Downloads Models)
@@ -123,9 +122,8 @@ python main.py verify-realtime data/test/person_01_Akshay_Kumar/01.jpg
 
 This will:
 1. Download InsightFace Buffalo_L models to `~/.insightface/models/`
-2. Download MTCNN weights automatically
-3. May take 5-10 minutes on first run
-4. Subsequent runs are instant
+2. May take 5-10 minutes on first run
+3. Subsequent runs are instant
 
 ### Step 6: Test Interactive Mode
 
@@ -144,10 +142,7 @@ Should show:
    - Location: `~/.insightface/models/buffalo_l/`
    - Downloaded on first run
    - Cached for future use
-
-2. **MTCNN weights** (~5MB)
-   - Downloaded by mtcnn package
-   - Cached automatically
+   - Includes RetinaFace detector and ArcFace recognizer
 
 ## Directory Structure After Installation
 
