@@ -38,3 +38,4 @@ Thumbs.db
 *.log
 /memory-bank
 /project_configs
+/.claude
