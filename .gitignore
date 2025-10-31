@@ -36,5 +36,5 @@ models/*.onnx
 Thumbs.db
 *.pyc
 *.log
-CLAUDE.md
 /memory-bank
+/project_configs
